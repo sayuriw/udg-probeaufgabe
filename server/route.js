@@ -3,6 +3,7 @@ const Item = require('./model')
 
 router.get('/', (req, res) => {
   Item.find()
+  // Item.find({ hersteller: 'Nakedshirt'})
     .then(items => res.json(items))
     .catch(err => res.json(err))
 })
@@ -12,6 +13,12 @@ router.get('/:id', (req, res) => {
     .then(items => res.json(items))
     .catch(err => res.json(err))
 })
+
+// router.get('/nakedshirt', (req, res) => {
+//   Item.find({ hersteller: 'Nakedshirt' })
+//     .then(items => res.json(items))
+//     .catch(err => res.json(err))
+// })
 
 router.post('/', (req, res) => {
   Item.create(req.body)
