@@ -10,6 +10,10 @@ export function patchItem(id, data) {
   return fetchItems({ method: 'PATCH', id, data })
 }
 
+export function deleteItem(id) {
+  return fetchItems({ method: 'DELETE', id })
+}
+
 function fetchItems({ method = 'GET', id = '', data } = {}) {
   return fetch('/items/' + id, {
     method,

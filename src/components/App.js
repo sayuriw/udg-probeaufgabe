@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react'
 import { ItemsContext } from '../provider'
 import styled from 'styled-components/macro'
 import Item from './Item'
 import CreateItem from './CreateItem'
-import { getItems } from './services'
+import { getItems, postItem, deleteItem, patchItem } from './services'
 
 export default function App() {
-
   const [items, setItems] = useContext(ItemsContext)
 
   useEffect(() => {
@@ -14,24 +13,48 @@ export default function App() {
   }, [])
 
   return (
-    
     <PageStyled>
       <HeaderStyled>List of Items</HeaderStyled>
-      <CreateItem/>
+      <CreateItem onSubmit={createItem}/>
       {items.map(item => (
-        <Item key={item._id} {...item}/>
+        <Item
+          key={item._id}
+          onDeleteClick={() => handleDeleteClick(item)}
+          //onEditClick={() => handleEditClick(item)}
+          {...item}
+        />
       ))}
     </PageStyled>
   )
 
   function filterItems() {
     getItems(items).then(items => {
-      const filteredItems = items.filter(item => item.Produktart === 'T-Shirts')
+      const filteredItems = items.filter(
+        item => item.Hersteller === 'Nakedshirt'
+      )
       setItems(filteredItems)
     })
   }
-
-
+  function createItem(itemData) {
+    postItem(itemData).then(item => {
+      setItems([item, ...items])
+    })
+  }
+  // function handleEditClick(id, editData) {
+  // // this info is coming from onSubmit in createItem 
+  //   patchItem(id, editData).then(editItem => {
+  //     const index = items.findIndex(item => item._id === editItem._id)
+  //     setItems([...items.slice(0, index), editItem, ...items.slice(index + 1)])
+  //   })
+  // }
+  function handleDeleteClick(item) {
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+      deleteItem(item._id).then(deletedItem => {
+        const index = items.findIndex(item => item._id === deletedItem._id)
+        setItems([...items.slice(0, index), ...items.slice(index + 1)])
+      })
+    }
+  }
 }
 
 const PageStyled = styled.main`
@@ -47,4 +70,3 @@ const HeaderStyled = styled.h1`
   margin-top: 0;
   padding: 20px;
 `
-

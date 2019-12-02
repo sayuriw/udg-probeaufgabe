@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { DeleteForever } from 'styled-icons/material/DeleteForever'
+import { Edit } from 'styled-icons/boxicons-solid/Edit'
 
 export default function Item({
   Artikelname,
@@ -16,9 +17,22 @@ export default function Item({
   Taschenart,
   Grammatur,
   Material,
-  Ursprungsland
+  Ursprungsland,
+  onEditClick,
+  onDeleteClick
 
 }) {
+
+  function handleEditClick(event) {
+    event.stopPropagation()
+    onEditClick()
+  }
+
+  function handleDeleteClick(event) {
+    event.stopPropagation()
+    onDeleteClick()
+  }
+
   return (
     <ItemStyled>
       {Artikelname && (<h2>{Artikelname}</h2>)}
@@ -33,7 +47,29 @@ export default function Item({
       {Grammatur && (<p><b>Grammatur: </b>{Grammatur}</p>)}
       {Material && (<p><b>Material: </b>{Material}</p>)}
       {Ursprungsland && (<p><b>Ursprungsland: </b>{Ursprungsland}</p>)}
-      <DeleteStyled></DeleteStyled>
+      <IconsWrapperStyled>
+        <DeleteStyled onClick={handleDeleteClick}/>
+        <EditStyled
+          // to={{
+          //   pathname: '/edit',
+          //   editItemData: {
+          //     Artikelname,
+          //     Hersteller,
+          //     Beschreibung,
+          //     Materialangaben,
+          //     Geschlecht,
+          //     Ärmel,
+          //     Kragen,
+          //     Herstellung,
+          //     Taschenart,
+          //     Grammatur,
+          //     Material,
+          //     Ursprungsland
+          //   }
+          // }}
+          onClick={handleEditClick}
+        />
+      </IconsWrapperStyled>
     </ItemStyled>
     
 
@@ -48,11 +84,19 @@ const ItemStyled = styled.section`
   border-radius: 5px;
   box-shadow: 0 10px 10px #0002;
 `
+const IconsWrapperStyled = styled.div`
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+`
+const EditStyled = styled(Edit)`
+  height: 45px;
+  width: 45px;
+  padding: 5px;
+`
 const DeleteStyled = styled(DeleteForever)`
-position: absolute;
-height: 45px;
-width: 45px;
-padding: 5px;
-right: 20px;
-bottom: 15px;
+  height: 45px;
+  width: 45px;
+  padding: 5px;
+
 `

@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { ItemsContext } from '../provider'
 import styled from 'styled-components/macro'
 
-export default function CreateItem(editItemData, onSubmit) {
-  const [title, setTitle] = useState(editItemData.title || '')
-  const [hersteller, setHersteller] = useState(editItemData.hersteller || '')
-  const [beschreibung, setBeschreibung] = useState(editItemData.beschreibung || '')
-  const [materialangaben, setMaterialangaben] = useState(editItemData.materialangaben || '')
-  const [geschlecht, setGeschlecht] = useState(editItemData.geschlecht || '')
-  const [aermel, setAermel] = useState(editItemData.aermel || '')
-  const [kragen, setKragen] = useState(editItemData.kragen || '')
-  const [herstellung, setHerstellung] = useState(editItemData.herstellung || '')
-  const [grammatur, setGrammatur] = useState(editItemData.grammatur || '')
-  const [material, setMaterial] = useState(editItemData.material || '')
+
+export default function CreateItem({onSubmit}) {
+
+  //const [items, setItems] = useContext(ItemsContext)
+
+  // const [artikelName, setArtikelName] = useState(editItemData.Artikelname || '')
+  // const [hersteller, setHersteller] = useState(editItemData.hersteller || '')
+  // const [beschreibung, setBeschreibung] = useState(editItemData.beschreibung || '')
+  // const [materialangaben, setMaterialangaben] = useState(editItemData.materialangaben || '')
+  // const [geschlecht, setGeschlecht] = useState(editItemData.geschlecht || '')
+  // const [aermel, setAermel] = useState(editItemData.aermel || '')
+  // const [kragen, setKragen] = useState(editItemData.kragen || '')
+  // const [herstellung, setHerstellung] = useState(editItemData.herstellung || '')
+  // const [grammatur, setGrammatur] = useState(editItemData.grammatur || '')
+  // const [material, setMaterial] = useState(editItemData.material || '')
   const [isFormThere, setIsFormThere] = useState(false)
 
   function handleSubmit(event) {
@@ -19,60 +24,63 @@ export default function CreateItem(editItemData, onSubmit) {
     const form = event.target
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-    const newEditItemData = {
-      ...editItemData,
-      title,
-      hersteller,
-      beschreibung,
-      materialangaben,
-      geschlecht,
-      aermel,
-      kragen,
-      herstellung,
-      grammatur,
-      material
-    }
+          data.Hersteller = "Nakedshirt"
+    // const newEditItemData = {
+    //   ...editItemData,
+    //   artikelName,
+    //   hersteller,
+    //   beschreibung,
+    //   materialangaben,
+    //   geschlecht,
+    //   aermel,
+    //   kragen,
+    //   herstellung,
+    //   grammatur,
+    //   material
+    // }
 
-    editItemData.id ? onSubmit(editItemData.id, newEditItemData): onSubmit(data)
+     //editItemData.id ? onSubmit(editItemData.id, newEditItemData) : 
+     onSubmit(data)
     setIsFormThere(false)
 
   }
+  
   return (
     <>
       <ButtonNewItemStyled onClick={() => setIsFormThere(true)}>Neues Item</ButtonNewItemStyled>
       {isFormThere && <FormStyled onSubmit={handleSubmit}>
         <LabelStyled>
-          Title
+          Artikel Name
           <InputStyled
-            name="title"
-            value={title}
-            onChange={event => setTitle(event.target.value)}
+            name="Artikelname"
+            // value={artikelName}
+            // onChange={event => setArtikelName(event.target.value)}
           />
         </LabelStyled>
         <WrapperTwoColumns>
           <LabelStyled>
             Hersteller
             <InputStyled 
-              name="hersteller"
-              value={hersteller}
-              onChange={event => setHersteller(event.target.value)}
+              name="Hersteller"
+              // value={hersteller}
+              // onChange={event => setHersteller(event.target.value)}
             />
           </LabelStyled>
           <LabelStyled>
             Herstellung
             <InputStyled 
-              name="herstellung"
-              value={herstellung}
-              onChange={event => setHerstellung(event.target.value)}
+              name="Herstellung"
+              // value={herstellung}
+              // onChange={event => setHerstellung(event.target.value)}
             />
           </LabelStyled>
         </WrapperTwoColumns>
         <LabelStyled>
           Beschreibung
           <TextAreaStyled
-            name="beschreibung"
-            value={beschreibung}
-            onChange={event => setBeschreibung(event.target.value)}
+            name="Beschreibung"
+            // value={beschreibung}
+            // onChange={event => setBeschreibung(event.target.value)}
             rows="4"
             cols="30"
           />
@@ -80,34 +88,34 @@ export default function CreateItem(editItemData, onSubmit) {
         <LabelStyled>
           Materialangaben
           <InputStyled 
-            name="materialangaben"
-            value={materialangaben}
-            onChange={event => setMaterialangaben(event.target.value)}
+            name="Materialangaben"
+            // value={materialangaben}
+            // onChange={event => setMaterialangaben(event.target.value)}
           />
         </LabelStyled>
         <WrapperThreeColumns>
           <LabelStyled>
             Geschlecht
             <InputStyled 
-              name="geschlecht"
-              value={geschlecht}
-              onChange={event => setGeschlecht(event.target.value)}
+              name="Geschlecht"
+              // value={geschlecht}
+              // onChange={event => setGeschlecht(event.target.value)}
             />
           </LabelStyled>
           <LabelStyled>
             Ärmel
             <InputStyled 
-              name="aermel"
-              value={aermel}
-              onChange={event => setAermel(event.target.value)}
+              name="Ärmel"
+              // value={aermel}
+              // onChange={event => setAermel(event.target.value)}
             />
           </LabelStyled>
           <LabelStyled>
             Kragen
             <InputStyled 
-              name="kragen"
-              value={kragen}
-              onChange={event => setKragen(event.target.value)}
+              name="Kragen"
+              // value={kragen}
+              // onChange={event => setKragen(event.target.value)}
             />
           </LabelStyled>
         </WrapperThreeColumns>
@@ -115,17 +123,17 @@ export default function CreateItem(editItemData, onSubmit) {
           <LabelStyled>
             Grammatur
             <InputStyled 
-              name="grammatur"
-              value={grammatur}
-              onChange={event => setGrammatur(event.target.value)}
+              name="Grammatur"
+              // value={grammatur}
+              // onChange={event => setGrammatur(event.target.value)}
             />
           </LabelStyled>
           <LabelStyled>
             Material
             <InputStyled 
-              name="material"
-              value={material}
-              onChange={event => setMaterial(event.target.value)}
+              name="Material"
+              // value={material}
+              // onChange={event => setMaterial(event.target.value)}
             />
           </LabelStyled>
         </WrapperTwoColumns>
