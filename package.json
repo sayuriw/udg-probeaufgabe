@@ -13,7 +13,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.2.0",
-    "styled-components": "^5.0.0-rc.2"
+    "styled-components": "^5.0.0-rc.2",
+    "styled-icons": "^9.0.1"
   },
   "scripts": {
     "start": "run-p server dev",
