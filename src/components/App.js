@@ -30,7 +30,7 @@ export default function App() {
   function filterItems() {
     getItems(items).then(items => {
       const filteredItems = items.filter(
-        item => item.Hersteller === 'Nakedshirt'
+        item => item.Produktart === 'T-Shirts'
       )
       setItems(filteredItems)
     })
