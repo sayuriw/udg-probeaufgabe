@@ -24,7 +24,7 @@ export default function CreateItem({onSubmit}) {
     const form = event.target
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
-          data.Hersteller = "Nakedshirt"
+          data.Produktart = "T-Shirts"
      onSubmit(data)
     setIsFormThere(false)
 

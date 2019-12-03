@@ -9,9 +9,7 @@ export default function Item({
   Beschreibung,
   Materialangaben,
   Geschlecht,
-  Produktart,
   Ärmel,
-  Bein,
   Kragen,
   Herstellung,
   Taschenart,
@@ -44,9 +42,8 @@ export default function Item({
     const form = event.target
     const formData = new FormData(form)
     const editData = Object.fromEntries(formData)
-          editData.Hersteller = "Nakedshirt"
+          editData.Produktart = "T-Shirts"
           editData._id = id
-          console.log('data', editData)
     onSubmit(editData)
     setIsFormThere(false)
     setIsActive(false)
