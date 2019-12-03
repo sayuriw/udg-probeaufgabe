@@ -99,7 +99,7 @@ const InputStyled = styled.input`
   font-size: 1rem;
   border: grey solid 1px;
   :focus {
-    border: blue solid 1px;
+    border: #FF4382 solid 1px;
   }
 `
 const TextAreaStyled = styled.textarea`
@@ -107,7 +107,7 @@ const TextAreaStyled = styled.textarea`
   font-size: 1rem;
   border: grey solid 1px;
   :focus {
-    border: blue solid 1px;
+    border: #FF4382 solid 1px;
   }
 `
 const ButtonStyled = styled.button`
@@ -121,8 +121,8 @@ const ButtonStyled = styled.button`
 `
 const ButtonNewItemStyled = styled.button`
   text-decoration: none;
-  background-color: grey;
-  margin: 0 25px;
+  background-color: #635561;
+  margin: 25px;
   padding: 8px 10px;
   border-radius: 10px;
   font-size: 16px;

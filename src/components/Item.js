@@ -190,7 +190,7 @@ const ItemStyled = styled.section`
   position: relative;
   background: white;
   padding: 20px;
-  margin: 10px;
+  margin: 15px;
   border-radius: 5px;
   box-shadow: 0 10px 10px #0002;
 `
@@ -241,7 +241,7 @@ const InputStyled = styled.input`
   font-size: 1rem;
   border: grey solid 1px;
   :focus {
-    border: blue solid 1px;
+    border: #FF4382 solid 1px;
   }
 `
 const TextAreaStyled = styled.textarea`
@@ -249,7 +249,7 @@ const TextAreaStyled = styled.textarea`
   font-size: 1rem;
   border: grey solid 1px;
   :focus {
-    border: blue solid 1px;
+    border: #FF4382 solid 1px;
   }
 `
 const ButtonStyled = styled.button`
