@@ -20,7 +20,7 @@ export default function App() {
         <Item
           key={item._id}
           onDeleteClick={() => handleDeleteClick(item)}
-          //onEditClick={() => handleEditClick(item)}
+          onSubmit={handleEditClick}
           {...item}
         />
       ))}
@@ -40,13 +40,13 @@ export default function App() {
       setItems([item, ...items])
     })
   }
-  // function handleEditClick(id, editData) {
-  // // this info is coming from onSubmit in createItem 
-  //   patchItem(id, editData).then(editItem => {
-  //     const index = items.findIndex(item => item._id === editItem._id)
-  //     setItems([...items.slice(0, index), editItem, ...items.slice(index + 1)])
-  //   })
-  // }
+   function handleEditClick(editData) {
+     const id = editData._id
+     patchItem(id, editData).then(editItem => {
+     const index = items.findIndex(item => item._id === id)
+       setItems([...items.slice(0, index), editItem, ...items.slice(index + 1)])
+     })
+   }
   function handleDeleteClick(item) {
     if (window.confirm('Are you sure you wish to delete this item?')) {
       deleteItem(item._id).then(deletedItem => {

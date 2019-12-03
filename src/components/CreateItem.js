@@ -25,21 +25,6 @@ export default function CreateItem({onSubmit}) {
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
           data.Hersteller = "Nakedshirt"
-    // const newEditItemData = {
-    //   ...editItemData,
-    //   artikelName,
-    //   hersteller,
-    //   beschreibung,
-    //   materialangaben,
-    //   geschlecht,
-    //   aermel,
-    //   kragen,
-    //   herstellung,
-    //   grammatur,
-    //   material
-    // }
-
-     //editItemData.id ? onSubmit(editItemData.id, newEditItemData) : 
      onSubmit(data)
     setIsFormThere(false)
 
