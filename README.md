@@ -19,7 +19,6 @@ The app was built using [create-react-app](https://github.com/facebook/create-re
 - nodemon
 - mongoose
 - styled-components
-gaa
 
 ### Requirements
 
