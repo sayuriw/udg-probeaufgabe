@@ -12,8 +12,8 @@ export default createGlobalStyle`
   
   body {
     margin: 0;
-    background: #EFEFEF;
-    color: #4F4F4F;
+    background: #faf2f8;
+    color: #635561;
     font-size: 17px;
   }
 `
