@@ -3,6 +3,7 @@ import { ItemsContext } from '../provider'
 import styled from 'styled-components/macro'
 import Item from './Item'
 import Filter from './Filter'
+import Chart from './Chart'
 import { getItems, deleteItem, patchItem } from './services'
 
 export default function ItemsPage() {
@@ -16,7 +17,7 @@ export default function ItemsPage() {
       return prev
     }, new Set())
   )
-
+  
   useEffect(() => {
     initialItemsFilter()
   }, [])
@@ -27,6 +28,7 @@ export default function ItemsPage() {
 
   return (
     <PageStyled>
+      <Chart />
       <Filter
         filters={allFilters}
         selectedFilter={selectedFilter}
@@ -42,14 +44,13 @@ export default function ItemsPage() {
       ))}
     </PageStyled>
   )
-
+  
   function initialItemsFilter() {
     getItems(items).then(items => {
-      const initialItems = items.filter(item => item.Produktart === 'T-Shirts')
+      const initialItems = items.filter(item => item.Kragen === "V-Ausschnitt" && item.Material === "Baumwolle")
       setItems(initialItems)
     })
   }
-
   function handleEditClick(editData) {
     const id = editData._id
     patchItem(id, editData).then(editItem => {
